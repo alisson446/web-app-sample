@@ -4,7 +4,7 @@ import {
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
-} from '../actions/actions';
+} from '../constants/actionTypes';
 
 /**
  * Application state has structure below:
@@ -24,6 +24,7 @@ const { SHOW_ALL } = VisibilityFilters;
 
 function todos(state = [], action) {
   switch (action.type) {
+    
     case ADD_TODO:
       return [
         ...state,
@@ -31,7 +32,8 @@ function todos(state = [], action) {
           text: action.text,
           completed: false
         }
-      ]
+      ];
+
     case TOGGLE_TODO:
       return state.map((todo, index) => {
         if (index === action.index) {
@@ -39,10 +41,12 @@ function todos(state = [], action) {
             completed: !todo.completed
           })
         }
-        return todo
-      })
+        return todo;
+      });
+
     default:
-      return state
+      return state;
+
   }
 }
 
@@ -61,7 +65,9 @@ function visibilityFilter(state = SHOW_ALL, action) {
 }
 
 // Main reducer
-export default todoApp = combineReducers({
+const todoApp = combineReducers({
   visibilityFilter: visibilityFilter,
   todos: todos
 });
+
+export default todoApp;

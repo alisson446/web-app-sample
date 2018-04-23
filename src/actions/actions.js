@@ -21,15 +21,10 @@ export function toggleTodo(index) {
     index 
   };
 }
-​
+
 export function setVisibilityFilter(filter) {
   return { 
     type: SET_VISIBILITY_FILTER, 
     filter 
   };
-}
-
-// Dispatchers
-export function boundAddTodo(text) {
-  return dispatch(addTodo(text));
 }
